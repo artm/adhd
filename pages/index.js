@@ -2,15 +2,73 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import EditMeStyles from '../styles/EditMe.module.css'
 import dynamic from 'next/dynamic'
+import React from "react"
 
-const Paragraph = dynamic(
-  () => import('@editorjs/paragraph'),
-  { ssr: false }
-)
 const EditorJs = dynamic(
   () => import('react-editor-js'),
   { ssr: false }
 )
+
+export default function Home() {
+  const colRefs = [
+    React.useRef(null),
+    React.useRef(null)
+  ]
+  function changed() {
+    const blocks = [
+      colRefs[0].current.querySelectorAll(".ce-block"),
+      colRefs[1].current.querySelectorAll(".ce-block"),
+    ]
+    const blockCount = Math.min(blocks[0].length, blocks[1].length)
+    for (let i = 0; i < blockCount; i++) {
+      const height = Math.max(
+        blocks[0][i].firstElementChild.clientHeight,
+        blocks[1][i].firstElementChild.clientHeight
+      )
+      height = "" + height + "px"
+      if (blocks[0][i]) { blocks[0][i].style.minHeight = height }
+      if (blocks[1][i]) { blocks[1][i].style.minHeight = height }
+    }
+  }
+
+  return (
+    <div>
+      <Head>
+        <title>Edit me</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className={EditMeStyles.wrapper}>
+        <div ref={colRefs[0]} className={EditMeStyles.column}>
+          <EditorJs
+            data={data[0]}
+            placeholder="Edit me"
+            preserveBlank={true}
+            onChange={changed}
+          />
+        </div>
+        <div ref={colRefs[1]} className={EditMeStyles.column}>
+          <EditorJs
+            data={data[1]}
+            placeholder="Edit me"
+            preserveBlank={true}
+            onChange={changed}
+          />
+        </div>
+      </div>
+
+      <footer className={styles.footer}>
+        <a
+          href="https://twitter.com/nathanwpyle/status/1156299925795364864/photo/1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by the Nearest Star
+        </a>
+      </footer>
+    </div>
+  )
+}
 
 const data = [
   {
@@ -59,48 +117,3 @@ const data = [
   },
 ]
 
-const tools = {
-  paragraph: {
-    class: Paragraph,
-  }
-}
-
-export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>Edit me</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <div className={EditMeStyles.wrapper}>
-        <div className={EditMeStyles.column}>
-          <EditorJs
-            data={data[0]}
-            tools={tools}
-            placeholder="Edit me"
-            preserveBlank={true}
-          />
-        </div>
-        <div className={EditMeStyles.column}>
-          <EditorJs
-            data={data[1]}
-            tools={tools}
-            placeholder="Edit me"
-            preserveBlank={true}
-          />
-        </div>
-      </div>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://twitter.com/nathanwpyle/status/1156299925795364864/photo/1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by the Nearest Star
-        </a>
-      </footer>
-    </div>
-  )
-}
