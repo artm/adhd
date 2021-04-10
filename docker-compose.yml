@@ -1,0 +1,12 @@
+---
+version: "3.7"
+services:
+  app:
+    image: ${NODE_IMAGE}
+    command: npx next dev
+    ports:
+      - ${DEV_APP_PORT}:3000
+    user: ${UGID}
+    volumes:
+      - .:/work
+    working_dir: /work
