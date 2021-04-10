@@ -17,11 +17,11 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://twitter.com/nathanwpyle/status/1156299925795364864/photo/1"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by the Local Star
+          Powered by the Nearest Star
         </a>
       </footer>
     </div>
