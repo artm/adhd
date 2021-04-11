@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 import EditMeStyles from '../styles/EditMe.module.css'
 import dynamic from 'next/dynamic'
 import React from "react"
+import Memos from '../src/memos'
 
 const EditorJs = dynamic(
   () => import('react-editor-js'),
@@ -38,7 +39,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+
       <div className={EditMeStyles.wrapper}>
+        <Memos />
         <div ref={colRefs[0]} className={EditMeStyles.column}>
           <EditorJs
             data={data[0]}
