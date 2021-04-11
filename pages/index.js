@@ -5,12 +5,10 @@ import dynamic from 'next/dynamic'
 import React from "react"
 import Memos from '../src/memos'
 
-const EditorJs = dynamic(
-  () => import('react-editor-js'),
-  { ssr: false }
-)
+const Column = dynamic(() => import("../src/column"), { ssr: false })
 
 export default function Home() {
+
   const colRefs = [
     React.useRef(null),
     React.useRef(null)
@@ -43,18 +41,14 @@ export default function Home() {
       <div className={EditMeStyles.wrapper}>
         <Memos />
         <div ref={colRefs[0]} className={EditMeStyles.column}>
-          <EditorJs
+          <Column
             data={data[0]}
-            placeholder="Edit me"
-            preserveBlank={true}
             onChange={changed}
           />
         </div>
         <div ref={colRefs[1]} className={EditMeStyles.column}>
-          <EditorJs
+          <Column
             data={data[1]}
-            placeholder="Edit me"
-            preserveBlank={true}
             onChange={changed}
           />
         </div>
