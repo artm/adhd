@@ -5,31 +5,9 @@ import dynamic from 'next/dynamic'
 import React from "react"
 import Memos from '../src/memos'
 
-const Column = dynamic(() => import("../src/column"), { ssr: false })
+const SyncEditor = dynamic(() => import("../src/sync_editor"), { ssr: false })
 
 export default function Home() {
-
-  const colRefs = [
-    React.useRef(null),
-    React.useRef(null)
-  ]
-  function changed() {
-    const blocks = [
-      colRefs[0].current.querySelectorAll(".ce-block"),
-      colRefs[1].current.querySelectorAll(".ce-block"),
-    ]
-    const blockCount = Math.min(blocks[0].length, blocks[1].length)
-    for (let i = 0; i < blockCount; i++) {
-      const height = Math.max(
-        blocks[0][i].firstElementChild.clientHeight,
-        blocks[1][i].firstElementChild.clientHeight
-      )
-      height = "" + height + "px"
-      if (blocks[0][i]) { blocks[0][i].style.minHeight = height }
-      if (blocks[1][i]) { blocks[1][i].style.minHeight = height }
-    }
-  }
-
   return (
     <div>
       <Head>
@@ -37,19 +15,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <div className={EditMeStyles.wrapper}>
         <Memos />
-        <Column
-          colref={colRefs[0]}
-          data={data[0]}
-          onChange={changed}
-        />
-        <Column
-          colref={colRefs[1]}
-          data={data[1]}
-          onChange={changed}
-        />
+        <SyncEditor data={data} />
       </div>
 
       <footer className={styles.footer}>
