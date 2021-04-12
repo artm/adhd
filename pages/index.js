@@ -40,18 +40,16 @@ export default function Home() {
 
       <div className={EditMeStyles.wrapper}>
         <Memos />
-        <div ref={colRefs[0]} className={EditMeStyles.column}>
-          <Column
-            data={data[0]}
-            onChange={changed}
-          />
-        </div>
-        <div ref={colRefs[1]} className={EditMeStyles.column}>
-          <Column
-            data={data[1]}
-            onChange={changed}
-          />
-        </div>
+        <Column
+          colref={colRefs[0]}
+          data={data[0]}
+          onChange={changed}
+        />
+        <Column
+          colref={colRefs[1]}
+          data={data[1]}
+          onChange={changed}
+        />
       </div>
 
       <footer className={styles.footer}>
