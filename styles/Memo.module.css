@@ -5,29 +5,32 @@
   border-radius: 5px;
   border: solid thin #F7F7F7;
   background: #F7F7F7;
+  font-family: sans-serif;
   font-size: xx-small;
   color: #AAA;
   box-shadow: 0px 0px 10px 10px white;
   display: inline-block;
-  position: absolute;
+  position: fixed;
+  text-indent: 0;
+  line-height: normal;
 }
 
-.color_0 {
+memo.context:nth-child(4n), memo.context:nth-child(4n) .memo {
   background: yellow;
   color: black;
 }
 
-.color_1 {
+memo.context:nth-child(4n+1), memo.context:nth-child(4n+1) .memo {
   background: #917DA1;
   color: #E5E5E5;
 }
 
-.color_2 {
+memo.context:nth-child(4n+2), memo.context:nth-child(4n+2) .memo {
   background: teal;
   color: #E5E5E5;
 }
 
-.color_3 {
+memo.context:nth-child(4n+3), memo.context:nth-child(4n+3) .memo {
   background: wheat;
   color: #777;
 }

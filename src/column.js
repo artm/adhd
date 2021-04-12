@@ -1,12 +1,13 @@
 import EditorJs from 'react-editor-js'
 import Paragraph from '@editorjs/paragraph'
 import Header from '@editorjs/header'
+import MemoTool from '../src/memo_tool'
 import EditMeStyles from '../styles/EditMe.module.css'
 
 const ejsTools = {
   paragraph: {
     class: Paragraph,
-    inlineToolbar: ['italic']
+    inlineToolbar: ['memo', 'italic']
   },
   header: {
     class: Header,
@@ -14,7 +15,10 @@ const ejsTools = {
       levels: [1, 2, 3],
       defaultLevel: 1
     },
-    inlineToolbar: ['italic']
+    inlineToolbar: ['memo', 'italic']
+  },
+  memo: {
+    class: MemoTool
   }
 }
 export default function Column({ data, onChange, colref }) {

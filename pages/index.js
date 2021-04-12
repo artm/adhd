@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.css'
 import EditMeStyles from '../styles/EditMe.module.css'
 import dynamic from 'next/dynamic'
 import React from "react"
-import Memos from '../src/memos'
 
 const SyncEditor = dynamic(() => import("../src/sync_editor"), { ssr: false })
 
@@ -16,7 +15,6 @@ export default function Home() {
       </Head>
 
       <div className={EditMeStyles.wrapper}>
-        <Memos />
         <SyncEditor data={data} />
       </div>
 
