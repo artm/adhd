@@ -5,7 +5,11 @@ import styles from '../styles/Memo.module.css'
 
 function Memo() {
   return (
-    <Draggable><span className={styles.memo} contentEditable={false}>мемка</span></Draggable>
+    <Draggable
+      defaultPosition={{ x: -30, y: -20 }}
+    >
+      <span className={styles.memo} contentEditable={false}>мемка</span>
+    </Draggable>
   )
 }
 
