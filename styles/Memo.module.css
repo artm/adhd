@@ -13,25 +13,26 @@
   position: fixed;
   text-indent: 0;
   line-height: normal;
+  user-select: none;
 }
 
-memo.context:nth-child(4n), memo.context:nth-child(4n) .memo {
-  background: yellow;
-  color: black;
-}
-
-memo.context:nth-child(4n+1), memo.context:nth-child(4n+1) .memo {
+.context:nth-child(4n+1), .context:nth-child(4n+1) .memo {
   background: #917DA1;
   color: #E5E5E5;
 }
 
-memo.context:nth-child(4n+2), memo.context:nth-child(4n+2) .memo {
+.context:nth-child(4n+2), .context:nth-child(4n+2) .memo {
   background: teal;
   color: #E5E5E5;
 }
 
-memo.context:nth-child(4n+3), memo.context:nth-child(4n+3) .memo {
+.context:nth-child(4n+3), .context:nth-child(4n+3) .memo {
   background: wheat;
   color: #777;
+}
+
+.context:nth-child(4n+4), .context:nth-child(4n) .memo {
+  background: yellow;
+  color: black;
 }
 

@@ -31,6 +31,7 @@ export default function SyncEditor({ data }) {
 
   const columns = data.map(
     (data, i) => <Column
+      key={i}
       colref={colRefs[i]}
       data={data}
       onChange={changed}

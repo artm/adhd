@@ -1,4 +1,13 @@
+import Draggable from 'react-draggable'
+import ReactDOM from 'react-dom'
+
 import styles from '../styles/Memo.module.css'
+
+function Memo() {
+  return (
+    <Draggable><span className={styles.memo} contentEditable={false}>мемка</span></Draggable>
+  )
+}
 
 export default class MemoTool {
   static get isInline() { return true }
@@ -18,22 +27,16 @@ export default class MemoTool {
   surround(range) {
     if (this.state) { return }
 
-    const selectedText = range.extractContents()
-    const memo = document.createElement('memo')
+    const memo = document.createElement('span')
     const classAttr = document.createAttribute('class')
     classAttr.value = styles.context
     memo.setAttributeNode(classAttr)
-    memo.appendChild(selectedText)
 
-    const memoContent = document.createElement('memo')
-    const memoContentClass = document.createAttribute('class')
-    memoContentClass.value = styles.memo
-    memoContent.setAttributeNode(memoContentClass)
-    memoContent.textContent = "here be memo content"
-
-    memo.appendChild(memoContent)
-
+    const text = range.toString()
+    range.deleteContents()
     range.insertNode(memo)
+
+    ReactDOM.render(<>{text}<Memo /></>, memo)
   }
 
 
