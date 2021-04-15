@@ -21,9 +21,15 @@ const ejsTools = {
     class: MemoTool
   }
 }
+
+function dragStarted(event) {
+  event.preventDefault()
+  return false
+}
+
 export default function Column({ data, onChange, colref }) {
   return (
-    <div ref={colref} className={EditMeStyles.column}>
+    <div ref={colref} className={EditMeStyles.column} onDragStart={dragStarted}>
       <EditorJs
         data={data}
         preserveBlank={true}
