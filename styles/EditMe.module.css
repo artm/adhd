@@ -4,6 +4,7 @@
   align-content: center;
   align-items: flex-start;
   transform: scale(1);
+  margin-top: 3ex;
 }
 .column {
   padding: 0 2em;

@@ -3,12 +3,11 @@
   max-width: 13em;
   padding: 3px;
   border-radius: 5px;
-  border: solid thin #F7F7F7;
   background: #F7F7F7;
   font-family: sans-serif;
   font-size: xx-small;
   color: #AAA;
-  box-shadow: 0px 0px 10px 10px white;
+  box-shadow: 0px 5px 10px 0px #777;
   display: inline-block;
   position: fixed;
   text-indent: 0;
