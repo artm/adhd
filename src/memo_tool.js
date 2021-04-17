@@ -38,9 +38,12 @@ export default class MemoTool {
   }
 
   render() {
+    const icon = document.createElement('img')
+    icon.setAttribute('src', 'icon.svg')
     this.button = document.createElement('button')
     this.button.type = 'button'
-    this.button.textContent = 'M'
+    this.button.setAttribute('class', 'ce-inline-tool')
+    this.button.appendChild(icon)
     return this.button
   }
 
@@ -48,9 +51,7 @@ export default class MemoTool {
     if (this.state) { return }
 
     const memo = document.createElement('span')
-    const classAttr = document.createAttribute('class')
-    classAttr.value = styles.context
-    memo.setAttributeNode(classAttr)
+    memo.setAttribute('class', styles.context)
 
     const text = range.toString()
     range.deleteContents()
