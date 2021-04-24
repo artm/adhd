@@ -30,6 +30,12 @@
       color: white;
     }
   }
+
+  .memo-text {
+    min-height: 2ex;
+    min-width: 2em;
+    margin-right: 3px;
+  }
 }
 
 $memo_colors: (

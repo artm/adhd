@@ -22,21 +22,11 @@ export default function Memo({ memoedDom }) {
         y: memoedDom.offsetTop - 20
       }}
     >
-      <div
-        ref={contentRef}
-        className="memo"
-      >
-        <div contentEditable={true}
-          style={{
-            minHeight: "2ex",
-            minWidth: "2em",
-            marginRight: "3px"
-          }}
-        />
+      <div ref={contentRef} className="memo">
+        <div contentEditable={true} className="memo-text" />
         <div className="memo-button">–</div>
         <div className="memo-button">×</div>
       </div>
     </Draggable>
   )
 }
-
