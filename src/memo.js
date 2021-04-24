@@ -25,9 +25,17 @@ export default function Memo({ memoedDom }) {
       <div
         ref={contentRef}
         className="memo"
-        style={{ minHeight: "3ex", minWidth: "2em" }}
-        contentEditable={true}
-      />
+      >
+        <div contentEditable={true}
+          style={{
+            minHeight: "2ex",
+            minWidth: "2em",
+            marginRight: "3px"
+          }}
+        />
+        <div className="memo-button">–</div>
+        <div className="memo-button">×</div>
+      </div>
     </Draggable>
   )
 }
