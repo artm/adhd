@@ -30,7 +30,7 @@ export default class MemoTool {
       memo.appendChild(range.extractContents())
       range.insertNode(memo)
 
-      this.config.onCreated(memo)
+      //this.config.onCreated(memo)
     }
   }
 

@@ -3,9 +3,11 @@ import React from 'react'
 
 import styles from '../styles/Memo.module.css'
 
-export default function Memo() {
+export default function Memo({ memoedDom }) {
   const contentRef = React.useRef(null)
   const [inited, setInited] = React.useState(false)
+
+  console.log(memoedDom)
 
   React.useEffect(() => {
     const content = contentRef.current
@@ -18,7 +20,9 @@ export default function Memo() {
   })
 
   return (
-    <Draggable defaultPosition={{ x: -30, y: -20 }} >
+    <Draggable
+      defaultPosition={{ x: memoedDom.clientLeft, y: memoedDom.clientTop }}
+    >
       <div
         ref={contentRef}
         className={styles.memo}
