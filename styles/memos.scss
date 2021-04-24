@@ -1,0 +1,50 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:color";
+
+.memo {
+  z-index: 10;
+  max-width: 13em;
+  padding: 3px;
+  border-radius: 5px;
+  background: #F7F7F7;
+  font-family: sans-serif;
+  font-size: xx-small;
+  color: #AAA;
+  box-shadow: 0px 5px 10px 0px #777;
+  display: inline-block;
+  position: fixed;
+  text-indent: 0;
+  line-height: normal;
+  user-select: none;
+}
+
+$memo_colors: (
+  (background: #917DA1, color: #E5E5E5),
+  (background: teal, color: #E5E5E5),
+  (background: wheat, color: #777),
+  (background: yellow, color: black),
+);
+$memo_colors_count: length($memo_colors);
+
+@for $i from 1 through $memo_colors_count {
+  $counter: "#{$memo_colors_count}n + #{$i}";
+  $nth: "nth-child(#{$counter})";
+  $map: list.nth($memo_colors, $i);
+  $background: map.get($map, "background");
+  $darker_bg: color.scale($background, $lightness: -20%, $saturation: -30% );
+  $color: map.get($map, "color");
+  $darker_co: color.scale($color, $lightness: -20%, $saturation: -30% );
+
+  .memoed:#{$nth},
+  .memo:#{$nth} {
+    background: #{$background};
+    color: #{$color};
+  }
+
+  .memoed:#{$nth}::selection {
+    background: #{$darker_bg};
+    color: #{$darker_co};
+  }
+}
+
