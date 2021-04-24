@@ -24,7 +24,6 @@ export default function Memo({ memoedDom }) {
     >
       <div ref={contentRef} className="memo">
         <div contentEditable={true} className="memo-text" />
-        <div className="memo-button">–</div>
         <div className="memo-button">×</div>
       </div>
     </Draggable>
