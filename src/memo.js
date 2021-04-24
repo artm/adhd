@@ -1,8 +1,6 @@
 import Draggable from 'react-draggable'
 import React from 'react'
 
-import styles from '../styles/Memo.module.css'
-
 export default function Memo({ memoedDom }) {
   const contentRef = React.useRef(null)
   const [inited, setInited] = React.useState(false)
@@ -25,7 +23,7 @@ export default function Memo({ memoedDom }) {
     >
       <div
         ref={contentRef}
-        className={styles.memo}
+        className="memo"
         style={{ minHeight: "3ex", minWidth: "2em" }}
         contentEditable={true}
       />
