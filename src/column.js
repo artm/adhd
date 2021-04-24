@@ -39,11 +39,11 @@ export default function Column({ data, onChange, colRef }) {
 
   return (
     <>
-      <ShadowDom columnDom={colRef.current} memoeds={memoeds} />
       <div
         ref={colRef}
         className={EditMeStyles.column}
         onDragStart={preventDraggingText}>
+        <ShadowDom columnDom={colRef.current} memoeds={memoeds} />
         <EditorJs
           instanceRef={(editorjs) => { editorjsRef.current = editorjs }}
           data={data}

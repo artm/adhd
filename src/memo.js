@@ -5,8 +5,6 @@ export default function Memo({ memoedDom }) {
   const contentRef = React.useRef(null)
   const [inited, setInited] = React.useState(false)
 
-  console.log(memoedDom)
-
   React.useEffect(() => {
     const content = contentRef.current
     if (!inited && content) {
@@ -19,7 +17,10 @@ export default function Memo({ memoedDom }) {
 
   return (
     <Draggable
-      defaultPosition={{ x: memoedDom.clientLeft, y: memoedDom.clientTop }}
+      defaultPosition={{
+        x: memoedDom.offsetLeft,
+        y: memoedDom.offsetTop - 20
+      }}
     >
       <div
         ref={contentRef}
