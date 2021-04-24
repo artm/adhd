@@ -1,38 +1,9 @@
-import Draggable from 'react-draggable'
-import React from 'react'
-import ReactDOM from 'react-dom'
-
-import styles from '../styles/Memo.module.css'
-
-function Memo() {
-  const contentRef = React.useRef(null)
-  const [inited, setInited] = React.useState(false)
-
-  React.useEffect(() => {
-    const content = contentRef.current
-    if (!inited && content) {
-      const selection = window.getSelection()
-      selection.empty()
-      selection.collapse(content, 0)
-      setInited(true)
-    }
-  })
-
-  return (
-    <Draggable defaultPosition={{ x: -30, y: -20 }} >
-      <div
-        ref={contentRef}
-        className={styles.memo}
-        style={{ minHeight: "3ex", minWidth: "2em" }}
-      />
-    </Draggable>
-  )
-}
-
 export default class MemoTool {
   static get isInline() { return true }
 
-  constructor() {
+  constructor({ api, config }) {
+    this.api = api
+    this.config = config
     this.button = null
     this.state = false
   }
@@ -48,18 +19,20 @@ export default class MemoTool {
   }
 
   surround(range) {
-    if (this.state) { return }
+    let existing = this.api.selection.findParentTag("span")
 
-    const memo = document.createElement('span')
-    memo.setAttribute('class', styles.context)
+    if (existing) {
+      console.log('FIXME unwrap')
+    } else {
+      const memo = document.createElement('span')
+      memo.setAttribute('class', "memoed")
 
-    const text = range.toString()
-    range.deleteContents()
-    range.insertNode(memo)
+      memo.appendChild(range.extractContents())
+      range.insertNode(memo)
 
-    ReactDOM.render(<>{text}<Memo /></>, memo)
+      this.config.onCreated(memo)
+    }
   }
-
 
   checkState(selection) {
     const text = selection.anchorNode
