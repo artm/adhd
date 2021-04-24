@@ -34,15 +34,26 @@
   .memo-text {
     min-height: 2ex;
     min-width: 2em;
-    margin-right: 3px;
+    margin-right: 1px;
+    padding: 2px;
+    border-radius: 2px;
+
+    &:focus {
+      outline: 0px solid transparent;
+      background: rgba(255,255,255,0.8);
+      color: black;
+    }
   }
 }
 
 $memo_colors: (
-  (background: #917DA1, color: #E5E5E5),
-  (background: teal, color: #E5E5E5),
-  (background: wheat, color: #777),
-  (background: yellow, color: black),
+  (background: #f94144, color: white),
+  (background: #f3722c, color: white),
+  (background: #f8961e, color: black),
+  (background: #f9c74f, color: black),
+  (background: #90be6d, color: black),
+  (background: #43aa8b, color: white),
+  (background: #577590, color: white),
 );
 $memo_colors_count: length($memo_colors);
 
@@ -71,6 +82,3 @@ $memo_colors_count: length($memo_colors);
   position: absolute;
 }
 
-[contenteditable]:focus {
-  outline: 0px solid transparent;
-}
