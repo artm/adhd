@@ -5,13 +5,14 @@ export default function Memo({ memoedDom }) {
   const contentRef = React.useRef(null)
   const [inited, setInited] = React.useState(false)
 
-  function onContentEdited(event) {
+  function onContentEdited() {
     memoedDom.dataset.memoText = this.innerText
   }
 
   React.useEffect(() => {
     const content = contentRef.current
     if (!inited && content) {
+      content.innerText = memoedDom.dataset.memoText || ""
       const selection = window.getSelection()
       selection.empty()
       selection.collapse(content, 0)

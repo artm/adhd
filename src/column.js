@@ -35,6 +35,9 @@ export default function Column({ data, onChange, colRef }) {
     setMemoeds(
       colRef.current.querySelectorAll(".memoed")
     )
+    editorjsRef.current.save().then((output) => {
+      console.log("current text:", output)
+    })
   }
 
   return (

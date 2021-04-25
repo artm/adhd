@@ -40,4 +40,13 @@ export default class MemoTool {
     const anchorElement = text instanceof Element ? text : text.parentElement
     this.state = !!anchorElement.closest('memo')
   }
+
+  static get sanitize() {
+    return {
+      span: {
+        class: "memoed",
+        "data-memo-text": true
+      }
+    }
+  }
 }
